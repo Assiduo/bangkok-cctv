@@ -1,0 +1,4 @@
+# only needed for fine-tuning the detector (scripts/11_train_detector.py)
+ultralytics>=8.3
+onnx>=1.12,<2.0
+onnxslim>=0.1.82

@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+# raw images (1.7 GB) never go to GitHub
+data/raw
+cctv_images/
+# intermediate feature shards
+data/processed/feature_shards*/
+outputs/logs/
+# big detector weights: GitHub rejects files > 100 MB. Only the small yolox_s.onnx is committed
+# (the online demo's Image explorer uses it); m / l / x are downloaded by scripts/00_download_model.py
+models/*.onnx
+!models/yolox_s.onnx
+
+# not needed online (kept in the Google Drive package instead)
+.DS_Store
+*.pt
+weights/
+outputs/train/
+data/labeling/images/
+data/labeling/dataset/

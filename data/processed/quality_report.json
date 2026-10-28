@@ -1,0 +1,14 @@
+{
+  "n_indexed": 61319,
+  "n_features": 61319,
+  "n_undecodable": 0,
+  "n_duplicate_timestamps": 0,
+  "n_unknown_camera": 0,
+  "n_is_blank": 504,
+  "n_is_degraded": 839,
+  "n_is_frozen": 586,
+  "n_is_low_light": 1375,
+  "n_usable": 59894,
+  "n_clean": 61319,
+  "n_gaps_over_threshold": 71
+}

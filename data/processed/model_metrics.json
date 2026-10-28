@@ -1,0 +1,47 @@
+{
+  "metrics": {
+    "Persistence (last hour)": {
+      "MAE": 12.149978109798472,
+      "R2": 0.3946098878550086
+    },
+    "Camera x hour average": {
+      "MAE": 11.584559156077185,
+      "R2": 0.43950548708016746
+    },
+    "Gradient boosting": {
+      "MAE": 11.32851142131983,
+      "R2": 0.4619402598423299
+    }
+  },
+  "features": [
+    "hour",
+    "weekday",
+    "is_weekend",
+    "lag1",
+    "lag2",
+    "latitude",
+    "longitude",
+    "camera_mean",
+    "camera_hour_mean",
+    "temperature_2m",
+    "relative_humidity_2m",
+    "precipitation",
+    "cloud_cover",
+    "wind_speed_10m",
+    "pm2_5",
+    "pm10"
+  ],
+  "train_days": [
+    "2026-08-25",
+    "2026-08-26",
+    "2026-08-27",
+    "2026-08-28",
+    "2026-08-29"
+  ],
+  "test_days": [
+    "2026-08-30",
+    "2026-08-31"
+  ],
+  "n_train": 6984,
+  "n_test": 2878
+}
