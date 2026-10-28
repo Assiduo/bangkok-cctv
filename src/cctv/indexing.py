@@ -1,7 +1,9 @@
 """Step 1 – turn a folder tree of raw JPEGs into a tidy image index table."""
 from __future__ import annotations
 
+import hashlib
 import re
+import unicodedata
 from pathlib import Path
 
 import pandas as pd
@@ -47,3 +49,12 @@ def load_camera_info(path: Path = config.CAMERA_INFO_CSV) -> pd.DataFrame:
         ~cams["camera_name"].str.contains("connect BMAcctv", case=False, na=False), cams["location"])
     cams["camera_label"] = cams["camera_id"].astype(str) + " · " + cams["camera_name"].str.slice(0, 40)
     return cams
+
+
+def sample_name(image_path: str) -> str:
+    """Short ASCII file name used for the shipped sample frames.
+
+    The raw Thai file names can exceed the 255-byte limit of Linux file systems, so the demo copies are stored as
+    ``<camera_id>/<hash>.jpg`` and looked up through this same function."""
+    rel = unicodedata.normalize("NFC", str(image_path).replace("\\", "/"))
+    return f"{rel.split('/')[0]}_{hashlib.md5(rel.encode('utf-8')).hexdigest()[:16]}.jpg"

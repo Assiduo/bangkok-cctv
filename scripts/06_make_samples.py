@@ -9,6 +9,7 @@ import shutil
 import pandas as pd
 
 from cctv import config
+from cctv.indexing import sample_name
 
 HOURS = (8, 13, 18)
 TOP_ANOMALIES = 60
@@ -29,7 +30,7 @@ def main() -> None:
 
     config.SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
     for rel in sorted(paths):
-        target = config.SAMPLES_DIR / rel
+        target = config.SAMPLES_DIR / sample_name(rel)   # short ASCII name: raw Thai names exceed Linux's 255-byte limit
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(config.RAW_DIR / rel, target)
     size = sum(p.stat().st_size for p in config.SAMPLES_DIR.rglob("*.jpg")) / 1e6

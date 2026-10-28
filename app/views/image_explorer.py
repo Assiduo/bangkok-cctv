@@ -9,6 +9,7 @@ import style
 
 from cctv import config
 from cctv.imageio import read_bgr
+from cctv.indexing import sample_name
 from data_access import Data
 
 
@@ -35,8 +36,11 @@ def available_frames(data: Data, root, is_sample: bool) -> pd.DataFrame:
     imgs = data.images
     if not is_sample:
         return imgs
-    have = {p.relative_to(root).as_posix() for p in root.rglob("*.jpg")}
-    return imgs[imgs["image_path"].str.replace("\\", "/", regex=False).isin(have)]
+    have = {p.name for p in root.rglob("*.jpg")}
+    short = imgs["image_path"].map(sample_name)
+    out = imgs[short.isin(have)].copy()
+    out["image_path"] = short[out.index]          # shipped copies use short ASCII names (see indexing.sample_name)
+    return out
 
 
 @st.cache_data(show_spinner=False, max_entries=300)
