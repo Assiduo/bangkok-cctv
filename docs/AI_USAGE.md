@@ -34,4 +34,4 @@ YOLOX: Apache-2.0. Ultralytics YOLO: AGPL-3.0 (experiment only). Dashboard: Stre
 
 ## 6. Team
 Passakorn Rakwetpakorn (6638161521), Pattamaporn Prasertkarakul (6638113421), Tanapong Nuengsigkapian (6638080321).
-Who reviewed what: ________________________
+Who reviewed what: Passakorn built and checked the data pipeline, detector evaluation and dashboard; Tanapong reviewed the models (forecast and detector results); Pattamaporn prepared the slides and presentation.
