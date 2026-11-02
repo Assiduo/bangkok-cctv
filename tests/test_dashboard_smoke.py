@@ -8,8 +8,35 @@ from cctv import config
 from helpers import build_processed_dir
 
 APP = str(Path(__file__).resolve().parents[1] / "app" / "dashboard.py")
-PAGES = ["Overview", "Map", "Temporal patterns", "Camera groups", "Anomalies", "Forecast",
-         "External data", "Image explorer", "Data quality & method"]
+VIEWS = ["overview", "map_view", "temporal", "profile", "compare", "clusters", "trip", "anomalies", "forecast",
+         "external_data", "image_explorer", "model_check", "method", "story", "team"]
+
+# The app uses st.navigation, so each page module is rendered directly with the same data and global filters.
+SCRIPT = """
+import sys
+sys.path.insert(0, {app!r})
+import streamlit as st
+st.cache_data.clear()
+from data_access import data_version, load_data, sidebar_filters
+import importlib
+data = load_data(data_version())
+filters = sidebar_filters(data)
+importlib.import_module("views." + {view!r}).render(data, filters)
+"""
+
+
+def _patch(monkeypatch, processed, tmp_path):
+    monkeypatch.setattr(config, "PROCESSED_DIR", processed)
+    monkeypatch.setattr(config, "CLEAN_PARQUET", processed / "images_clean.parquet")
+    monkeypatch.setattr(config, "HOURLY_PARQUET", processed / "camera_hourly.parquet")
+    monkeypatch.setattr(config, "CAMERA_PARQUET", processed / "camera_summary.parquet")
+    monkeypatch.setattr(config, "RAW_DIR", tmp_path / "no_raw")
+    monkeypatch.setattr(config, "SAMPLES_DIR", tmp_path / "no_samples")
+
+
+def _run(view):
+    at = AppTest.from_string(SCRIPT.format(app=str(Path(APP).parent), view=view), default_timeout=180)
+    return at.run()
 
 
 @pytest.fixture(scope="module")
@@ -19,19 +46,11 @@ def processed(tmp_path_factory):
     return out
 
 
-@pytest.mark.parametrize("page", PAGES)
-def test_page_renders_without_exception(page, processed, monkeypatch, tmp_path):
-    monkeypatch.setattr(config, "PROCESSED_DIR", processed)
-    monkeypatch.setattr(config, "CLEAN_PARQUET", processed / "images_clean.parquet")
-    monkeypatch.setattr(config, "HOURLY_PARQUET", processed / "camera_hourly.parquet")
-    monkeypatch.setattr(config, "CAMERA_PARQUET", processed / "camera_summary.parquet")
-    monkeypatch.setattr(config, "RAW_DIR", tmp_path / "no_raw")
-    monkeypatch.setattr(config, "SAMPLES_DIR", tmp_path / "no_samples")
-    at = AppTest.from_file(APP, default_timeout=120)
-    at.run()
-    assert not at.exception, at.exception
-    at.sidebar.radio[0].set_value(page).run()
-    assert not at.exception, f"{page}: {at.exception}"
+@pytest.mark.parametrize("view", VIEWS)
+def test_page_renders_without_exception(view, processed, monkeypatch, tmp_path):
+    _patch(monkeypatch, processed, tmp_path)
+    at = _run(view)
+    assert not at.exception, f"{view}: {at.exception}"
 
 
 def test_external_page_with_scraped_data(tmp_path_factory, monkeypatch, tmp_path):
@@ -42,10 +61,8 @@ def test_external_page_with_scraped_data(tmp_path_factory, monkeypatch, tmp_path
         monkeypatch.setattr(config, name, out / fname if fname else out)
     monkeypatch.setattr(config, "RAW_DIR", tmp_path / "no_raw")
     monkeypatch.setattr(config, "SAMPLES_DIR", tmp_path / "no_samples")
-    at = AppTest.from_file(APP, default_timeout=180)
-    at.run()
-    at.sidebar.radio[0].set_value("External data").run()
+    at = _run("external_data")
     assert not at.exception, at.exception
     assert not at.info, "external page should show charts, not the 'no data' hint"
-    at.sidebar.radio[0].set_value("Forecast").run()
+    at = _run("forecast")
     assert not at.exception, at.exception

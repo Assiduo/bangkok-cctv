@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: bangkok-cctv
+Version: 1.0.0
+Summary: Bangkok CCTV image analysis: images -> structured data -> insights -> dashboard
+Requires-Python: >=3.10
