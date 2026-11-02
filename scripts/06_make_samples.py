@@ -28,6 +28,17 @@ def main() -> None:
         frames = df[(df.camera_id == a.camera_id) & (df.date == a.date) & (df.hour == a.hour)].sort_values("timestamp")
         paths.update(frames["image_path"].iloc[[0, len(frames) // 2]] if len(frames) > 1 else frames["image_path"])
 
+    # Dashboard cards show the busiest frame of a camera at its peak hour, so ship the busiest usable frame
+    # for every camera and every daytime hour (7-18), plus the calmest frame at each camera's busiest hour.
+    full = pd.read_parquet(config.CLEAN_PARQUET, columns=["camera_id", "image_path", "hour", "usable", "congestion_idx", "vehicle_total"])
+    day = full[full["usable"] & full["hour"].between(7, 18)]
+    order = ["congestion_idx", "vehicle_total"]
+    busiest = day.sort_values(order, ascending=False).groupby(["camera_id", "hour"]).head(1)
+    paths.update(busiest["image_path"])
+    peak = busiest.sort_values(order, ascending=False).groupby("camera_id").head(1)[["camera_id", "hour"]]
+    calm = day.merge(peak, on=["camera_id", "hour"]).sort_values(order).groupby("camera_id").head(1)
+    paths.update(calm["image_path"])
+
     config.SAMPLES_DIR.mkdir(parents=True, exist_ok=True)
     for rel in sorted(paths):
         target = config.SAMPLES_DIR / sample_name(rel)   # short ASCII name: raw Thai names exceed Linux's 255-byte limit
