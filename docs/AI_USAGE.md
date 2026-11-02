@@ -22,7 +22,7 @@ This project (2190513 Data Science, Bangkok CCTV Image Analysis) used AI assista
 
 ## 3. AI help with code, analysis and design
 - Claude (Anthropic) assisted with: pipeline scripts, evaluation scripts, dashboard code and visual design,
-  the README, the presentation slides and speaker script, and drafting explanations. All outputs were run and checked by the team; numbers in the report come from our own data.
+  the README, a first draft of the presentation slides and speaker script (the team then edited the script in its own words), and drafting explanations. All outputs were run and checked by the team; numbers in the report come from our own data.
 
 ## 4. Data sources
 Camera frames: Bangkok CCTV (25-31 Aug 2026). External data: weather, air quality, OpenStreetMap places, district
