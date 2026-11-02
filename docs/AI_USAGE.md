@@ -20,9 +20,19 @@ This project (2190513 Data Science, Bangkok CCTV Image Analysis) used AI assista
 - A fine-tuned YOLO11 detector (Ultralytics, AGPL-3.0) was trained as an experiment. It did **not** beat YOLOX-X
   on held-out cameras and is **not used** in the final results.
 
-## 3. AI help with code, analysis and design
-- Claude (Anthropic) assisted with: pipeline scripts, evaluation scripts, dashboard code and visual design,
-  the README, a first draft of the presentation slides and speaker script (the team then edited the script in its own words), and drafting explanations. All outputs were run and checked by the team; numbers in the report come from our own data.
+## 3. Who did what: the team and the AI assistant
+**What the team did (the project is ours):**
+- Set the goal, the scope and every key decision: which detector to use, the 0.30 threshold (after comparing 0.20 / 0.25 / 0.30 on our frames and by eye), which scraped sources to add, and how the dashboard should look and behave (we rejected designs and asked for changes several times).
+- Ran the whole pipeline ourselves on our own machine and GPU: all 61,319 frames, cleaning, analysis, the forecast model and the detector comparison.
+- Checked the results against the data and the images (including viewing detections frame by frame), reviewed the models, published the repository and deployed the dashboard.
+- Rewrote the speaker script in our own words, and recorded and presented the video.
+
+**Where Claude (Anthropic) assisted:** we used it as a coding and writing assistant for
+- pipeline, evaluation and dashboard code (we ran and tested it; the project has a test suite that we run),
+- reviewing detector boxes into labels (section 2),
+- the README, a first draft of the slides and of the speaker script, and drafting explanations.
+
+All numbers in the report and dashboard come from our own data and our own runs.
 
 ## 4. Data sources
 Camera frames: Bangkok CCTV (25-31 Aug 2026). External data: weather, air quality, OpenStreetMap places, district
