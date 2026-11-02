@@ -12,9 +12,9 @@ TEAM = [
     {"name": "Passakorn Rakwetpakorn", "id": "6638161521", "photo": "team_passakorn.jpg",
      "role": "Data pipeline, vehicle detection and evaluation, dashboard design and build."},
     {"name": "Pattamaporn Prasertkarakul", "id": "6638113421", "photo": "team_pattamaporn.jpg",
-     "role": "Team member, 2190513 Data Science (ICE) final project."},
+     "role": "Slides and presentation."},
     {"name": "Tanapong Nuengsigkapian", "id": "6638080321", "photo": "team_tanapong.jpg",
-     "role": "Team member, 2190513 Data Science (ICE) final project."},
+     "role": "Model review."},
 ]
 
 
