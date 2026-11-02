@@ -226,6 +226,17 @@ def story_head(kicker: str, question: str, answer: str) -> None:
                 unsafe_allow_html=True)
 
 
+def no_preview(caption: str = "") -> None:
+    """Shown instead of a frame when the online demo does not ship that image (the full set is ~1.7 GB)."""
+    cap = f"<br><span>{caption}</span>" if caption else ""
+    st.markdown(
+        '<div style="border:1px dashed #cbd5e1;border-radius:12px;background:#f8fafc;padding:18px 16px;color:#475569;'
+        'font-size:.85rem;line-height:1.45;text-align:center"><b style="color:#334155">Preview not included in the online demo</b><br>'
+        'The full image set (61,319 frames, about 1.7 GB) and the large YOLOX-X detector are too big for free hosting, '
+        'so only a sample of frames is shipped. Run the dashboard locally to see every frame.' + cap + '</div>',
+        unsafe_allow_html=True)
+
+
 def note(text: str) -> None:
     st.markdown(f'<div class="note">{text}</div>', unsafe_allow_html=True)
 

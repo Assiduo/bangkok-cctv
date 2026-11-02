@@ -44,6 +44,6 @@ def render(data: Data, f: dict) -> None:
     if got:
         st.image(got[0], caption=f"{hr:02d}:00 · {got[1]}", width=520)
     else:
-        st.caption("No image for this hour on this computer.")
+        style.no_preview()
     style.download_csv(h[["date", "hour", "vehicle_total", "congestion_idx", "car", "motorcycle", "bus", "truck"]],
                        f"camera_{cid}_hourly.csv", "Download this camera's hourly data")

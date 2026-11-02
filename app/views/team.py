@@ -12,9 +12,9 @@ TEAM = [
     {"name": "Passakorn Rakwetpakorn", "id": "6638161521", "photo": "team_passakorn.jpg",
      "role": "Data pipeline, vehicle detection and evaluation, dashboard design and build."},
     {"name": "Pattamaporn Prasertkarakul", "id": "6638113421", "photo": "team_pattamaporn.jpg",
-     "role": "Slides and presentation."},
+     "role": "Slides and presentation: storyline, slide design, speaker notes and the 15-minute talk."},
     {"name": "Tanapong Nuengsigkapian", "id": "6638080321", "photo": "team_tanapong.jpg",
-     "role": "Model review."},
+     "role": "Model review: checked the forecast model, its metrics and the detector results, and the limitations we report."},
 ]
 
 

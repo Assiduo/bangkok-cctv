@@ -92,6 +92,9 @@ def where(data: Data, h: pd.DataFrame, cams: pd.DataFrame) -> None:
         got = frame_at(data, int(r.camera_id), hr, pick="busiest")
         if got:
             col.image(got[0], width="stretch")
+        else:
+            with col:
+                style.no_preview()
         col.markdown(f"**#{rank.index.get_loc(_) + 1} · {r.camera_name[:30]}**<br>busiest daytime hour {hr:02d}:00 · {got[1] if got else ''}",
                      unsafe_allow_html=True)
 

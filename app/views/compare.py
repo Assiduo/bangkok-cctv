@@ -35,4 +35,5 @@ def render(data: Data, f: dict) -> None:
         if got:
             col.image(got[0], caption=f"{label[cid]} · {hr:02d}:00 · {got[1]}", width="stretch")
         else:
-            col.caption(f"{label[cid]}: no image at {hr:02d}:00.")
+            with col:
+                style.no_preview(f"{label[cid]} · {hr:02d}:00")

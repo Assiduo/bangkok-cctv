@@ -43,6 +43,8 @@ def render(data: Data, f: dict) -> None:
         with col:
             if got:
                 st.image(got[0], width="stretch")
+            else:
+                style.no_preview()
             when = got[1] if got else f"{r.date} {r.hour:02d}:00"
             st.markdown(f"**#{r.camera_id} · {r.camera_name[:26]}**<br>{when} · {r.kind} (z={r.z:+.1f})", unsafe_allow_html=True)
 

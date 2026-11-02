@@ -44,3 +44,6 @@ def render(data: Data, f: dict) -> None:
         got = frame_at(data, cid, hr, pick=nm.lower())
         if got:
             col.image(got[0], caption=f"{nm} · {hr:02d}:00 · {got[1]}", width="stretch")
+        else:
+            with col:
+                style.no_preview(f"{nm} · {hr:02d}:00")
