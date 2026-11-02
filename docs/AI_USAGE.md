@@ -1,7 +1,6 @@
-# AI usage disclosure / การใช้ AI ช่วยในโปรเจกต์
+# AI usage disclosure
 
 This project (2190513 Data Science, Bangkok CCTV Image Analysis) used AI assistance. This page states exactly where.
-โปรเจกต์นี้ใช้ AI ช่วย ระบุไว้ตรงนี้ว่าใช้ตรงไหนบ้าง
 
 ## 1. Vehicle detector (final pipeline)
 - Model: **YOLOX-X** (pretrained on COCO, ONNX, 640 px input). Used as-is, **not fine-tuned**.
@@ -23,7 +22,7 @@ This project (2190513 Data Science, Bangkok CCTV Image Analysis) used AI assista
 
 ## 3. AI help with code, analysis and design
 - Claude (Anthropic) assisted with: pipeline scripts, evaluation scripts, dashboard code and visual design,
-  and drafting explanations. All outputs were run and checked by the team; numbers in the report come from our own data.
+  the README, the presentation slides and speaker script, and drafting explanations. All outputs were run and checked by the team; numbers in the report come from our own data.
 
 ## 4. Data sources
 Camera frames: Bangkok CCTV (25-31 Aug 2026). External data: weather, air quality, OpenStreetMap places, district
