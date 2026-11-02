@@ -32,5 +32,6 @@ boundaries (scraped; see Data & method page).
 ## 5. Licences
 YOLOX: Apache-2.0. Ultralytics YOLO: AGPL-3.0 (experiment only). Dashboard: Streamlit, Plotly (open source).
 
-## 6. Team to complete
-Add team names and who reviewed what: ________________________
+## 6. Team
+Passakorn Rakwetpakorn (6638161521), Pattamaporn Prasertkarakul (6638113421), Tanapong Nuengsigkapian (6638080321).
+Who reviewed what: ________________________

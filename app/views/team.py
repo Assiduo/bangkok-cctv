@@ -1,4 +1,4 @@
-"""Team page. Edit the TEAM list below to add the other two members."""
+"""Team page. Edit the TEAM list below to change names, ids, photos (app/assets/) or roles."""
 import base64
 from pathlib import Path
 
@@ -8,12 +8,13 @@ import style
 
 ASSETS = Path(__file__).resolve().parent.parent / "assets"
 
-# Add the other two members here (photo file goes in app/assets/, leave photo=None for a placeholder).
 TEAM = [
     {"name": "Passakorn Rakwetpakorn", "id": "6638161521", "photo": "team_passakorn.jpg",
      "role": "Data pipeline, vehicle detection and evaluation, dashboard design and build."},
-    {"name": "Team member 2", "id": "to be added", "photo": None, "role": "To be added."},
-    {"name": "Team member 3", "id": "to be added", "photo": None, "role": "To be added."},
+    {"name": "Pattamaporn Prasertkarakul", "id": "6638113421", "photo": "team_pattamaporn.jpg",
+     "role": "Team member, 2190513 Data Science (ICE) final project."},
+    {"name": "Tanapong Nuengsigkapian", "id": "6638080321", "photo": "team_tanapong.jpg",
+     "role": "Team member, 2190513 Data Science (ICE) final project."},
 ]
 
 
