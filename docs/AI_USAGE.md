@@ -41,6 +41,9 @@ boundaries (scraped; see Data & method page).
 ## 5. Licences
 YOLOX: Apache-2.0. Ultralytics YOLO: AGPL-3.0 (experiment only). Dashboard: Streamlit, Plotly (open source).
 
-## 6. Team
-Passakorn Rakwetpakorn (6638161521), Pattamaporn Prasertkarakul (6638113421), Tanapong Nuengsigkapian (6638080321).
-Who reviewed what: Passakorn built and checked the data pipeline, detector evaluation and dashboard; Tanapong reviewed the models (forecast and detector results); Pattamaporn prepared the slides and presentation.
+## 6. Team and responsibilities
+| Member | Student ID | Responsibility |
+|---|---|---|
+| Passakorn Rakwetpakorn | 6638161521 | Data pipeline, vehicle detection and evaluation, dashboard design and build |
+| Pattamaporn Prasertkarakul | 6638113421 | Slides and presentation |
+| Tanapong Nuengsigkapian | 6638080321 | Model review (forecast model and detector results) |
